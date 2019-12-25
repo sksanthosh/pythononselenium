@@ -1,0 +1,73 @@
+#This is note down the how we can use the element locator for testing
+
+Element locator are used to locate each element in the page uniquely.
+
+HTML Basics in short 
+
+Eg: 
+<input class="field" name="fld_username" required="" type="text" placeholder="myusername" value="" style="">Field Name<input>
+
+HTML is built upon the tags, attributes and some innertext if there,each element has starting tag and ending tag.
+
+Here tag is "input", attributes is class, name, required, type, placeholder, value, style and innertext is "Field Name".
+
+------------------------------------------------------------
+There are 7 type of locators used to locate the element in the page
+
+1. ID
+<input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
+	Some elements can be uniquely identified by the attribute id='email'.
+
+2. NAME
+<input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
+	Some elements can be uniquely identified by the attribute name='email'.
+
+3. CLASS
+<input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
+	Some elements can be uniquely identified by the attribute class='inputtext login_form_input_box'.
+
+4. TAG NAME
+<a href="#" style=" color:#fff;font-size: 21px;" class="displayPopup">Read Detail</a>
+	Some elements can be uniquely identified by the unique tag like tagname='a'
+
+5. LINK TEXT
+<a href="#" style=" color:#fff;font-size: 21px;" class="displayPopup">Read Detail</a>
+	This is applicable only on the hyper links, anchor tag |<a>|
+	link='InnerText'
+-------------------------------------------------------------------------------------------------------------
+6. CSS
+	CSS is one of other way like XPATH which is used to locate any element
+
+        CSS syntax : tagname[attribute='value']
+
+6a. CSS to identify element with id
+	<input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
+	
+	CSS syntax : tagname[attribute='value'] --> if attribute is id then --> tagname#value or only #value also works
+
+	eg: input#email or #email
+
+6b. CSS to identify element with class
+        <input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
+	
+	CSS syntax : tagname[attribute='value'] --> if attribute is class then --> tagname.value or only .value also works
+
+	eg: input.inputtext.login_form_input_box or .inputtext.login_form_input_box
+
+6c. CSS to identify an other element with any attribute
+        <input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
+	
+	CSS syntax : tagname[anyattribute='value'] ----> input[type='email'] or [type='email']
+
+6d. CSS to identify an element with any attribute with id
+        <input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
+
+	CSS syntax : tag#value[anyattribute='value'] or #value[anyattribute='value']
+
+6e. CSS to identify an element with any attribute with class
+        <input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
+
+	CSS sytax : tagname.value[anyattribute='value'] or .value[anyattribute='value']
+
+7. XPATH
+
