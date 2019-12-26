@@ -68,6 +68,119 @@ There are 7 type of locators used to locate the element in the page
         <input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
 
 	CSS sytax : tagname.value[anyattribute='value'] or .value[anyattribute='value']
+---------------------------------------------------------------------------------------------------------------------------------------
 
 7. XPATH
+	Xpath is one of the other way like CSS which is used widely to locate an element
+
+
+7a. XPATH to locate an element with single attribute
+	<input class="field" name="fld_username" required="" type="text" placeholder="myusername" value="" style="">
+	
+	XPATH syntax : //tagname[@attribute='value']   || CSS syntax : tagname[attribute='value']
+	
+	//input[@name='fld_username']
+
+7b. XPATH to locate an element with multiple attribute using 'or'
+        <input class="field" name="fld_username" required="" type="text" placeholder="myusername" value="" style="">
+
+        XPATH syntax : //tagname[@attribute1='value1' or @attribute2='value2']
+
+        //input[@name='fld_username' or @placeholder='myusername']
+		Note: the 'or' is case sensitive we should use lower case or
+
+7c. XPATH to locate an element with multiple attribute using 'and'
+        <input class="field" name="fld_username" required="" type="text" placeholder="myusername" value="" style="">
+
+        XPATH syntax : //tagname[@attribute1='value1' and @attribute2='value2']                                             
+
+        //input[@name='fld_username' and @placeholder='myusername'] 
+                Note: the 'and' is case sensitive we should use lower case and
+
+7d. XPATH to locate an element with wild card value '*' in attribute or tagname
+        <input class="field" name="fld_username" required="" type="text" placeholder="myusername" value="" style="">
+
+        XPATH syntax- * replacing tagname : //*[@attribute1='value1' and @attribute2='value2'] | //*[attribute='value']
+
+        //*[@name='fld_username' and @placeholder='myusername']
+		Note: to use this we should make sure the attribute are unique for the elements
+	
+       XPATH syntax- * replacing attributes : //tagname[@*='value1' and @*='value2'] | //tagname[*='value']
+
+        //input[@*='fld_username' and @*='myusername']
+                Note: to use this we should make sure the value and tags are unique for the elements
+
+7e. XPATH to locate an element with inner text 
+	<span style="background: rgb(204, 136, 136); border: 2px solid red;">Login or Sign Up to start</span>
+	
+	XPATH syntax: //tagname[text()='value']
+	
+	//span[text()='Login or Sign Up to start']
+		Note: we dont have @ for text as this is not the attribute in the tag of html and equals used as we are comparing the exact value of the innertext
+
+7f. XPATH to locate an element with partial text
+	<a href="#" style=" color:#fff;font-size: 21px;" class="displayPopup">Read Detail</a>
+	
+	XPATH syntax: //tagname[contains(text(),'value')]
+	
+	//a[contains(text(),'Detail')]
+		Note: Here we are not using = infront of text because we checking whether partial text is present or not hence we say contains
+
+
+7g. XPATH to locate an element with parital value of the attribute
+        <input class="field" name="fld_username" required="" type="text" placeholder="myusername" value="" style="">
+
+        XPATH syntax : //tagname[contains(@attribute,'value')]
+
+        //input[contains(@name,'username')]
+
+7h. XPATH to locate an element through the parent element
+	<ul class="tabs blue">
+        	<li>
+            		<input type="radio" name="tabs blue" id="tab1" checked="" style="">
+            			<label for="tab1">Register</label>
+            			<div id="tab-content1" class="tab-content">
+              			<p>Register now and kick start your career as a Software Testing Pro!</p>
+               				<br>
+                	  		<input type="submit" value="Sign up" style="">
+            			</div>
+          	</li>
+	  	<li>
+            		<input type="radio" name="tabs blue" id="tab2" style="">
+            			<label for="tab2">Login</label>
+                		<div class="btn">
+                  			<input type="checkbox" name="terms" style="">
+                  			<em>Keep me logged in </em>
+            			</div>
+				<div>
+				</div>
+          	</li>
+	</ul>
+
+	XPATH syntax: //parenttagname[@attribute='value']/immediatechildtagname/childtagname[position of childtagname under immediate child]
+		Note: Single forward slash indicate Xpath to check for immediate child under parent tag and Double forward slash indicates xpath to check for any child under the parenttagname
+	
+	//ul[@class='tabs blue']/li[2]/div[2]/input
+		Note: Our goal is to first find the parent tag and check move from there to the relevent element
+
+7e. XPATH to locate an element from the child element
+	https://www.facebook.com/ ----inspect for the username
+
+	XPATH syntax: //childtagname[@attribute='value']/parent::tagname
+	
+	//input[@id='email']/parent::td/parent::tr/parent::tbody/parent::table
+
+7f. XPATH to locate an element from the siblings element
+	
+	XPATH syntax: //tagname[@attribute='value']/following-sibling::tagname of the element
+		      //tagname[@attribute='value']/preceding-sibling::tagname
+	
+	//input[@name='tabs blue']/following-sibling::label
+
+	//input[@name='_txtUserName']/following-sibling::input----->https://www.thetestingworld.com/testings/ locating password box from username
+
+7g. XPATH to locate an element through combination of parent child and siblings
+	eg: locating an myusername under registration through the username in the login---->https://www.thetestingworld.com/testings/
+	
+	//input[@name='_txtUserName']/parent::form/parent::div/parent::li/preceding-sibling::li/div/form/input[2]
 
