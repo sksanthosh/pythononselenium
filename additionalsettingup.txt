@@ -1,0 +1,9 @@
+#By default on the Ubuntu 18.0.4 we get both python and python 3 to use only python3 for the project follow below methods
+1. Install python3.X using pip install python3
+2. pip install virtualenv or sudo apt install virtualenv
+3. mkdir venv [create and venv directory for the this pythonselenium project where all the packages will be installed over here to reduces the gliches from other application]
+4. sudo virtualenv -p python3 venv [Installing basic python3 setup files in the venv]
+5. source <created folder>/bin/activate	 source venv/bin/activate
+6. python -V gives python3.X version
+7. Install pycharm, download community version and while creating a project select existing virtualenv which is created above and select ok.
+ 
