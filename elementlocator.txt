@@ -1,8 +1,8 @@
-#This is note down the how we can use the element locator for testing
-
+#This is a small notes on how we can use the element locator for locating the element on the html pages
+#Our main is to locate an element uniquely to work with the selenium web automation
 Element locator are used to locate each element in the page uniquely.
-
-HTML Basics in short 
+---------------------------
+/*HTML Basics in short/*
 
 Eg: 
 <input class="field" name="fld_username" required="" type="text" placeholder="myusername" value="" style="">Field Name<input>
@@ -34,18 +34,21 @@ There are 7 type of locators used to locate the element in the page
 <a href="#" style=" color:#fff;font-size: 21px;" class="displayPopup">Read Detail</a>
 	This is applicable only on the hyper links, anchor tag |<a>|
 	link='InnerText'
+This above all types are used when the elements can be identified indivually by them and directly used in sync
+with drive.find_element(by.above5types('value'))
 -------------------------------------------------------------------------------------------------------------
 6. CSS
 	CSS is one of other way like XPATH which is used to locate any element
 
-        CSS syntax : tagname[attribute='value']
+   General CSS syntax ->>> tagname[attribute='value']
 
 6a. CSS to identify element with id
 	<input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
 	
-	CSS syntax : tagname[attribute='value'] --> if attribute is id then --> tagname#value or only #value also works
+	CSS syntax : anytagname[attribute='value'] --> if attribute is id then --> anytagname#value 
+	or only #value also works
 
-	eg: input#email or #email
+	eg: input#email or #email 
 
 6b. CSS to identify element with class
         <input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
@@ -57,7 +60,8 @@ There are 7 type of locators used to locate the element in the page
 6c. CSS to identify an other element with any attribute
         <input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
 	
-	CSS syntax : tagname[anyattribute='value'] ----> input[type='email'] or [type='email']
+	CSS syntax : tagname[anyattribute='value'] ->>> input[type='email']
+	or [type='email'] (this is used when value of the attribute is unique)
 
 6d. CSS to identify an element with any attribute with id
         <input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
@@ -116,15 +120,19 @@ There are 7 type of locators used to locate the element in the page
 	XPATH syntax: //tagname[text()='value']
 	
 	//span[text()='Login or Sign Up to start']
-		Note: we dont have @ for text as this is not the attribute in the tag of html and equals used as we are comparing the exact value of the innertext
-
+		Note: we dont have @ for text as this is not the attribute in the tag of html
+	 and equals used as we are comparing the exact value of the innertext
+---------------------
+Locating an element with partial data
+---------------------
 7f. XPATH to locate an element with partial text
 	<a href="#" style=" color:#fff;font-size: 21px;" class="displayPopup">Read Detail</a>
 	
 	XPATH syntax: //tagname[contains(text(),'value')]
 	
 	//a[contains(text(),'Detail')]
-		Note: Here we are not using = infront of text because we checking whether partial text is present or not hence we say contains
+	Note: Here we are not using = infront of text because we are checking whether partial text
+	 is present or not by using contains and note there is no @ infront of contains
 
 
 7g. XPATH to locate an element with parital value of the attribute
@@ -132,7 +140,7 @@ There are 7 type of locators used to locate the element in the page
 
         XPATH syntax : //tagname[contains(@attribute,'value')]
 
-        //input[contains(@name,'username')]
+        //input[contains(@name,'username')] | //input[contains(@type,'submit')]
 
 7h. XPATH to locate an element through the parent element
 	<ul class="tabs blue">
@@ -157,8 +165,10 @@ There are 7 type of locators used to locate the element in the page
           	</li>
 	</ul>
 
-	XPATH syntax: //parenttagname[@attribute='value']/immediatechildtagname/childtagname[position of childtagname under immediate child]
-		Note: Single forward slash indicate Xpath to check for immediate child under parent tag and Double forward slash indicates xpath to check for any child under the parenttagname
+   XPATH syntax: //parenttagname[@attribute='value']/immediatechildtagname/
+	childtagname[position of childtagname under immediate child]
+	Note: Single forward slash indicate Xpath to check for immediate child under parent tag
+	and Double forward slash indicates xpath to check for any child under the parenttagname
 	
 	//ul[@class='tabs blue']/li[2]/div[2]/input
 		Note: Our goal is to first find the parent tag and check move from there to the relevent element
@@ -177,10 +187,12 @@ There are 7 type of locators used to locate the element in the page
 	
 	//input[@name='tabs blue']/following-sibling::label
 
-	//input[@name='_txtUserName']/following-sibling::input----->https://www.thetestingworld.com/testings/ locating password box from username
+	//input[@name='_txtUserName']/following-sibling::input----->
+	https://www.thetestingworld.com/testings/ locating password box from username
 
 7g. XPATH to locate an element through combination of parent child and siblings
-	eg: locating an myusername under registration through the username in the login---->https://www.thetestingworld.com/testings/
+	eg: locating an myusername under registration through the username in the login---->
+	https://www.thetestingworld.com/testings/
 	
 	//input[@name='_txtUserName']/parent::form/parent::div/parent::li/preceding-sibling::li/div/form/input[2]
 
