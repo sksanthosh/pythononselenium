@@ -1,4 +1,4 @@
-#!/home/glucklich/pythononselenium/venv/bin/python
+#!/Users/shivananda/pythononselenium/venv/bin/python
 
 import sys
 import getopt

@@ -1,5 +1,4 @@
-#!/home/glucklich/pythononselenium/venv/bin/python3
-
+#!/Users/shivananda/pythononselenium/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
